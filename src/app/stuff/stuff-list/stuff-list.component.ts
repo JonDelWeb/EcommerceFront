@@ -14,9 +14,7 @@ import { Router } from '@angular/router';
 export class StuffListComponent implements OnInit, OnDestroy {
 
   public stuff: Thing[] = [];
-  public part: number;
   public loading: boolean;
-  public email: string;
 
   private stuffSub: Subscription;
 
