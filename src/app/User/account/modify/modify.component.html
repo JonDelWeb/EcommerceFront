@@ -1,0 +1,10 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading" class="col-sm-6 offset-sm-3 mt-2">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label for="mail">Mon mail :</label>
+            <input type="text" id="mail" formControlName="mail" class="form-control"  >
+        </div>
+
+    </form>
+</div> 

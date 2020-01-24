@@ -39,4 +39,23 @@ export class UserService {
         );
     });
   }
+
+  getUserById(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.post(
+        'http://localhost:3000/api/auth/getUserById',
+        { id: id })
+        .subscribe(
+          (user: User) => {
+            this.user = user;
+            this.localStorage.store('currentUser', this.user);
+            resolve();
+          },
+          (error: Error) => {
+            console.log(error, 'Error getting user');
+            reject(error);
+          }
+        );
+    });
+  }
 }

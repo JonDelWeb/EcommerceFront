@@ -7,8 +7,8 @@
       <h1>{{ thing?.title }}</h1>
       <h2 class="single-thing-price">{{ thing?.price / 100 | currency:'EUR' }}</h2>
       <p>{{ thing?.description }}</p>
-      <button class="btn btn-success m-1" (click)="onModify()" [disabled]="userId !== thing?.userId">Modifier</button>
-      <button class="btn btn-danger m-1" (click)="onDelete()" [disabled]="userId !== thing?.userId">Supprimer</button>
+      <button *ngIf="identified && userId === thing?.userId" class="btn btn-success m-1" (click)="onModify()" >Modifier</button>
+      <button *ngIf="identified && userId === thing?.userId" class="btn btn-danger m-1" (click)="onDelete()" >Supprimer</button>
     </div>
   </div>
 </div>

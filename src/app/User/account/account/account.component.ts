@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../../../models/User-model';
 import { UserService } from '../../../services/user.service';
@@ -16,9 +17,9 @@ export class AccountComponent implements OnInit {
   public part: number;
 
   constructor(
-    private localStorage: LocalStorageService,
-    private userService: UserService
-  ) { }
+              private localStorage: LocalStorageService,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -27,9 +28,12 @@ export class AccountComponent implements OnInit {
     this.userService.getUser(this.email)
       .then(() => {
         this.user = this.localStorage.get('currentUser');
-        console.log(this.user);
       })
       .catch((err) => console.log(err));
 
+  }
+
+  onLinkClicked(id: string) {
+    this.router.navigate(['account/modify/' + id]);
   }
 }

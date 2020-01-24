@@ -1,3 +1,5 @@
-<p>mon adresse mail : {{ user.user.email }}</p>
+<p>mon adresse mail : {{ user.user.email }}</p> 
+
+<a routerLink="modify/:id" routerLinkActive="active" (click)="onLinkClicked(user.user._id)"> modifier</a>
 
 <a routerLink="myStuff" routerLinkActive="active">Mes objets</a>

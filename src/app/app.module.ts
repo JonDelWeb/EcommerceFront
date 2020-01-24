@@ -18,6 +18,8 @@ import { SignupComponent } from './User/auth/signup/signup.component';
 import { AccountComponent } from './User/account/account/account.component';
 import { MyStuffComponent } from './User/account/my-stuff/my-stuff.component';
 import { NewThingComponent } from './stuff/new-thing/new-thing.component';
+import { ModifyComponent } from './User/account/modify/modify.component';
+import { ModifyThingComponent } from './stuff/modify-thing/modify-thing.component';
 
 
 
@@ -33,6 +35,8 @@ import { NewThingComponent } from './stuff/new-thing/new-thing.component';
     AccountComponent,
     MyStuffComponent,
     NewThingComponent,
+    ModifyComponent,
+    ModifyThingComponent,
     
   ],
   imports: [

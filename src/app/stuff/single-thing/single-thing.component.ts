@@ -16,6 +16,7 @@ export class SingleThingComponent implements OnInit, OnDestroy {
   public thing: Thing;
   public loading: boolean;
   public userId: string;
+  public identified: boolean;
 
 
   constructor(private router: Router,
@@ -25,6 +26,7 @@ export class SingleThingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loading = true;
+    this.identified = false;
     this.userId = this.auth.userId ? this.auth.userId : 'userID40282382';
     this.route.params.subscribe(
       (params: Params) => {
@@ -32,6 +34,9 @@ export class SingleThingComponent implements OnInit, OnDestroy {
           (thing: Thing) => {
             this.loading = false;
             this.thing = thing;
+            if (this.userId === thing.userId) {
+              this.identified = true;
+            }
             console.log(this.thing);
           }
         );
