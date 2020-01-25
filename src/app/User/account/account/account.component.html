@@ -1,5 +1,17 @@
-<p>mon adresse mail : {{ user.user.email }}</p> 
+<mat-spinner *ngIf="loading"></mat-spinner>
 
-<a routerLink="modify/:id" routerLinkActive="active" (click)="onLinkClicked(user.user._id)"> modifier</a> <br>
+<div *ngIf="!loading" class="col-sm-6 offset-sm-3 mt-2">
 
-<a routerLink="myStuff" routerLinkActive="active">Mes objets</a>
+    <div class="account">
+        <h2>Mon compte</h2>
+        <p>mon adresse mail : {{ user.user.email }}</p>
+
+
+        <button class="btn btn-primary" (click)="onLinkClicked(user.user._id)">Modifier</button><br>
+    </div>
+
+    <p>La liste de mes objets à la con : </p>
+    <a routerLink="myStuff" routerLinkActive="active">Mes objets</a>
+    
+
+</div>

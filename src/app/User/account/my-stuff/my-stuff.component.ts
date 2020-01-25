@@ -53,4 +53,8 @@ export class MyStuffComponent implements OnInit, OnDestroy {
     this.router.navigate(['/account']);
   }
 
+  addStuff() {
+    this.router.navigate(['/new-thing']);
+  }
+
 }

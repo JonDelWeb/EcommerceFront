@@ -63,7 +63,7 @@ export class ModifyThingComponent implements OnInit {
       () => {
         this.thingForm.reset();
         this.loading = false;
-        this.router.navigate(['/part-four/all-stuff']);
+        this.router.navigate(['/account/myStuff']);
       },
       (error) => {
         this.loading = false;
