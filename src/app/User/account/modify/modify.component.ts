@@ -30,24 +30,33 @@ export class ModifyComponent implements OnInit {
     this.loading = true;
     this.userForm = this.formBuilder.group({
       mail : [null, Validators.required],
-      password : [null, Validators.required]
+      // password : [null, Validators.required]
     });
-
     this.route.params.subscribe(
       (params) => {
-        console.log(params.id);
         this.userService.getUserById(params.id)
           .then(
             (user: User) => {
-              console.log(user);
               this.user = user;
-              this.userForm.get('email').setValue(this.user.email);
+              console.log(user);
+              this.userForm.get('mail').setValue(this.user.user.email);
               this.loading = false;
             }
           )
           .catch(err => console.log(err));
       }
     );
+  }
+
+  onSubmit() {
+    this.loading = true;
+    const user = new User();
+    user.email = this.user.email;
+
+  }
+
+  onGoBack() {
+    this.router.navigate(['/account']);
   }
 
 }

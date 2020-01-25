@@ -30,7 +30,7 @@ export class UserService {
           (user: User) => {
             this.user = user;
             this.localStorage.store('currentUser', this.user);
-            resolve();
+            resolve(this.user);
           },
           (error: Error) => {
             console.log(error, 'Error getting user');
@@ -48,8 +48,7 @@ export class UserService {
         .subscribe(
           (user: User) => {
             this.user = user;
-            this.localStorage.store('currentUser', this.user);
-            resolve();
+            resolve(this.user);
           },
           (error: Error) => {
             console.log(error, 'Error getting user');

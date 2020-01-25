@@ -26,7 +26,8 @@ export class AccountComponent implements OnInit {
     this.email = this.localStorage.get('email');
     console.log(this.email);
     this.userService.getUser(this.email)
-      .then(() => {
+      .then((user: User) => {
+        console.log(user);
         this.user = this.localStorage.get('currentUser');
       })
       .catch((err) => console.log(err));

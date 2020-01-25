@@ -48,7 +48,7 @@ export class NewThingComponent implements OnInit {
       () => {
         this.thingForm.reset();
         this.loading = false;
-        this.router.navigate(['/part-four/all-stuff']);
+        this.router.navigate(['/all-stuff']);
       },
       (error) => {
         this.loading = false;

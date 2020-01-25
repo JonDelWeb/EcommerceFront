@@ -42,11 +42,15 @@ export class MyStuffComponent implements OnInit, OnDestroy {
   }
 
   onProductClicked(id: string) {
-      this.router.navigate(['/part-four/thing/' + id]);
+      this.router.navigate(['/thing/' + id]);
   }
 
   ngOnDestroy() {
     this.stuffSub.unsubscribe();
+  }
+
+  onGoBack() {
+    this.router.navigate(['/account']);
   }
 
 }

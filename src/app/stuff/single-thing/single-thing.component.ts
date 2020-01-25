@@ -20,9 +20,9 @@ export class SingleThingComponent implements OnInit, OnDestroy {
 
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private stuffService: StuffService,
-              private auth: AuthService) { }
+    private route: ActivatedRoute,
+    private stuffService: StuffService,
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.loading = true;
@@ -30,16 +30,17 @@ export class SingleThingComponent implements OnInit, OnDestroy {
     this.userId = this.auth.userId ? this.auth.userId : 'userID40282382';
     this.route.params.subscribe(
       (params: Params) => {
-        this.stuffService.getThingById(params.id).then(
-          (thing: Thing) => {
-            this.loading = false;
-            this.thing = thing;
-            if (this.userId === thing.userId) {
-              this.identified = true;
+        this.stuffService.getThingById(params.id)
+          .then(
+            (thing: Thing) => {
+              this.loading = false;
+              this.thing = thing;
+              if (this.userId === thing.userId) {
+                this.identified = true;
+              }
+              console.log(this.thing);
             }
-            console.log(this.thing);
-          }
-        );
+          );
       }
     );
   }
@@ -64,6 +65,6 @@ export class SingleThingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
+
   }
 }
