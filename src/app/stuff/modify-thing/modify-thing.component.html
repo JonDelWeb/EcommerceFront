@@ -23,6 +23,9 @@
                 formControlName="description"
                 placeholder="Décrivez votre objet (type, qualité, etc.)"></textarea>
     </div>
+    <div class="form-group">
+      <input type="hidden" formControlName="rate">
+    </div>
     <button class="btn btn-primary" (click)="onSubmit()" [disabled]="thingForm.invalid">Valider</button>
     <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
   </form>

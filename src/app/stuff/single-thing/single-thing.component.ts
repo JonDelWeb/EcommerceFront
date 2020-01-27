@@ -17,12 +17,13 @@ export class SingleThingComponent implements OnInit, OnDestroy {
   public loading: boolean;
   public userId: string;
   public identified: boolean;
+  public currentRate: number;
 
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private stuffService: StuffService,
-    private auth: AuthService) { }
+              private route: ActivatedRoute,
+              private stuffService: StuffService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.loading = true;
@@ -38,6 +39,10 @@ export class SingleThingComponent implements OnInit, OnDestroy {
               if (this.userId === thing.userId) {
                 this.identified = true;
               }
+              if (thing.rate === null) {
+                this.thing.rate = 0;
+              }
+              this.currentRate = this.thing.rate;
               console.log(this.thing);
             }
           );
@@ -62,6 +67,11 @@ export class SingleThingComponent implements OnInit, OnDestroy {
           this.router.navigate(['/all-stuff']);
         }
       );
+  }
+
+  onRateChange(event: number) {
+    this.thing.rate = event;
+    this.stuffService.modifyRate(this.thing._id, this.thing);
   }
 
   ngOnDestroy() {

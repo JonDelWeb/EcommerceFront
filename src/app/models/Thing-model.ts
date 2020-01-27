@@ -5,5 +5,6 @@ export class Thing {
     imageUrl: string;
     price: number;
     userId: string;
+    rate: number;
   }
   

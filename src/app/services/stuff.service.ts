@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class StuffService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private stuff: Thing[] = [];
   public stuff$ = new Subject<Thing[]>();
@@ -33,17 +33,17 @@ export class StuffService {
     const params = new HttpParams()
       .set('userId', userId);
     this.http.get('http://localhost:3000/api/stuff/account/myStuff/?userId=' + userId)
-    .subscribe(
-      (stuff: Thing[]) => {
-        if (stuff) {
-          this.stuff = stuff;
-          this.emitStuff();
+      .subscribe(
+        (stuff: Thing[]) => {
+          if (stuff) {
+            this.stuff = stuff;
+            this.emitStuff();
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }
 
   emitStuff() {
@@ -102,6 +102,19 @@ export class StuffService {
           reject(error);
         }
       );
+    });
+  }
+
+  modifyRate(id: string, thing: Thing) {
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost:3000/api/stuff/' + id, thing)
+        .subscribe((response) => {
+          resolve(response);
+        },
+          (error) => {
+            reject(error);
+          }
+        );
     });
   }
 

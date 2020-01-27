@@ -59,6 +59,7 @@ export class ModifyThingComponent implements OnInit {
     thing.price = this.thingForm.get('price').value * 100;
     thing.imageUrl = '';
     thing.userId = this.userId;
+    thing.rate = 0;
     this.stuffService.modifyThingWithFile(this.thing._id, thing, this.thingForm.get('image').value).then(
       () => {
         this.thingForm.reset();

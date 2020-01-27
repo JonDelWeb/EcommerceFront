@@ -1,14 +1,23 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <button class="btn btn-link" (click)="onGoBack()"><< Retour</button>
-  <div class="single-thing-pane">
-    <img [src]="thing?.imageUrl" alt="">
-    <div class="single-thing-info">
-      <h1>{{ thing?.title }}</h1>
-      <h2 class="single-thing-price">{{ thing?.price / 100 | currency:'EUR' }}</h2>
-      <p>{{ thing?.description }}</p>
-      <button *ngIf="identified && userId === thing?.userId" class="btn btn-success m-1" (click)="onModify()" >Modifier</button>
-      <button *ngIf="identified && userId === thing?.userId" class="btn btn-danger m-1" (click)="onDelete()" >Supprimer</button>
-    </div>
-  </div>
+  <button class="btn btn-link" (click)="onGoBack()">
+    << Retour</button> 
+    <div class="single-thing-pane">
+      <img [src]="thing?.imageUrl" alt="">
+      <div class="single-thing-info">
+        <h1>{{ thing?.title }}</h1>
+        <h2 class="single-thing-price">{{ thing?.price / 100 | currency:'EUR' }}</h2>
+        <p>{{ thing?.description }}</p>
+        <div>
+          <ngb-rating [(rate)]="thing.rate" (rateChange)="onRateChange($event)"></ngb-rating>
+          <hr>
+          <pre>Vote: <b>{{ thing?.rate }}</b></pre>
+        </div>
+
+        <button *ngIf="identified && userId === thing?.userId" class="btn btn-success m-1"
+          (click)="onModify()">Modifier</button>
+        <button *ngIf="identified && userId === thing?.userId" class="btn btn-danger m-1"
+          (click)="onDelete()">Supprimer</button>
+      </div>
+</div>
 </div>
