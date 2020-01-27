@@ -20,6 +20,8 @@ import { MyStuffComponent } from './User/account/my-stuff/my-stuff.component';
 import { NewThingComponent } from './stuff/new-thing/new-thing.component';
 import { ModifyComponent } from './User/account/modify/modify.component';
 import { ModifyThingComponent } from './stuff/modify-thing/modify-thing.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -47,7 +49,8 @@ import { ModifyThingComponent } from './stuff/modify-thing/modify-thing.componen
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
